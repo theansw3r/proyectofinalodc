@@ -25,13 +25,7 @@ El proyecto está organizado en archivos fuente en **Jack**, cada uno con una re
 
 ```text
 MAZEMAN/
-├── Main.jack
-├── MazeGame.jack
-├── MazeMap.jack
-├── Player.jack
-├── Enemy.jack
-├── AIHelper.jack
-├── Random.jack
+├── src
 ├── CHANGELOG.md
 ├── LICENSE
 └── README.md
