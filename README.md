@@ -32,7 +32,6 @@ MAZEMAN/
 ├── Enemy.jack
 ├── AIHelper.jack
 ├── Random.jack
-├── README.md
 ├── CHANGELOG.md
-├── CONTRIBUTORS.md
-└── LICENSE
+├── LICENSE
+└── README.md
