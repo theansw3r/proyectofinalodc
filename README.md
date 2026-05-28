@@ -24,7 +24,7 @@ El proyecto integra diseño de mapa en grid, control de estados, renderizado gr�
 El proyecto está organizado en archivos fuente en **Jack**, cada uno con una responsabilidad específica dentro de la arquitectura del juego:
 
 ```text
-MAZEMAN/
+proyectofinalodc/
 ├── src
 ├── CHANGELOG.md
 ├── LICENSE
