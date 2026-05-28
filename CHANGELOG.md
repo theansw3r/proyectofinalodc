@@ -1,9 +1,17 @@
-Evolución del enfoque del proyecto: El proyecto evolucionó desde un prototipo inicial hacia un producto final más robusto y completo, incorporando mejoras en arquitectura, presentación visual, control de estados, lógica del enemigo y optimización del uso de memoria.
-Definición del concepto final del juego: Se definió el proyecto como un videojuego llamado MAZEMAN, inspirado estéticamente en la lógica arcade de Pac-Man, pero adaptado a los requerimientos específicos del curso.
-Redefinición del tamaño y resolución del mapa: Se amplió la resolución lógica para lograr una apariencia más rica y cercana a la estética arcade deseada. La versión adoptada en la fase avanzada utilizó una estructura de 32 columnas por 16 filas. Además, en un momento del desarrollo se observó que el mapa se dibujaba pequeño y anclado a la esquina superior izquierda de la pantalla. Para corregirlo, se implementó un sistema de centrado automático mediante offsets calculados con base en el ancho y alto total del mapa y las dimensiones de la pantalla Hack.
-Corrección de problemas de memoria relacionados con strings: Durante la implementación se detectó un problema de desbordamiento de heap asociado al uso repetido de strings en Jack. Los mensajes impresos en pantalla eran reconstruidos constantemente, lo que generaba consumo innecesario de memoria. Para corregir este problema, los textos principales del juego fueron trasladados a variables de tipo String almacenadas como fields del objeto, creadas una sola vez y reutilizadas en los diferentes estados del juego. Además, se incorporó su liberación en el método dispose()
-Reestructuración del loop principal: El ciclo principal del juego fue ajustado en varias ocasiones para garantizar estabilidad. La versión final incorporó:
-detección de teclas por frame,
-control de rebote mediante lastKey,
-procesamiento por estado activo mediante una variable auxiliar (currentState),
-pausas controladas con Sys.wait().
+### Añadido
+
+#### Proyecto Final
+
+- Evolución del enfoque del proyecto: El proyecto evolucionó desde un prototipo inicial hacia un producto final más robusto y completo, incorporando mejoras en arquitectura, presentación visual, control de estados, lógica del enemigo y optimización del uso de memoria.
+
+- Definición del concepto final del juego: Se definió el proyecto como un videojuego llamado `MAZEMAN`, inspirado estéticamente en la lógica arcade de Pac-Man, pero adaptado a los requerimientos específicos del curso.
+
+- Redefinición del tamaño y resolución del mapa: Se amplió la resolución lógica para lograr una apariencia más rica y cercana a la estética arcade deseada. La versión adoptada en la fase avanzada utilizó una estructura de `32 columnas por 16 filas`. Además, en un momento del desarrollo se observó que el mapa se dibujaba pequeño y anclado a la esquina superior izquierda de la pantalla. Para corregirlo, se implementó un sistema de centrado automático mediante offsets calculados con base en el ancho y alto total del mapa y las dimensiones de la pantalla Hack.
+
+- Corrección de problemas de memoria relacionados con strings: Durante la implementación se detectó un problema de desbordamiento de heap asociado al uso repetido de strings en Jack. Los mensajes impresos en pantalla eran reconstruidos constantemente, lo que generaba consumo innecesario de memoria. Para corregir este problema, los textos principales del juego fueron trasladados a variables de tipo `String` almacenadas como `fields` del objeto, creadas una sola vez y reutilizadas en los diferentes estados del juego. Además, se incorporó su liberación en el método `dispose()`.
+
+- Reestructuración del loop principal: El ciclo principal del juego fue ajustado en varias ocasiones para garantizar estabilidad. La versión final incorporó:
+  - detección de teclas por frame,
+  - control de rebote mediante `lastKey`,
+  - procesamiento por estado activo mediante una variable auxiliar (`currentState`),
+  - pausas controladas con `Sys.wait()`.
