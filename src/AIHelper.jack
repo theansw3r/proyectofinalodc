@@ -1,0 +1,120 @@
+// AIHelper.jack
+// Funciones de inteligencia artificial para el enemigo.
+// Estrategia: heurística Manhattan greedy con desempate por columna.
+
+class AIHelper {
+
+    // Valor absoluto
+    function int abs(int x) {
+        if (x < 0) { return -x; }
+        return x;
+    }
+
+    // Distancia Manhattan entre dos celdas
+    function int manhattan(int r1, int c1, int r2, int c2) {
+        return AIHelper.abs(r1 - r2) + AIHelper.abs(c1 - c2);
+    }
+
+    // Evalúa los 4 vecinos del enemigo y devuelve la fila del mejor movimiento.
+    // En empate perfecto prefiere moverse en fila (desempate consistente).
+    function int nextRow(int er, int ec, int pr, int pc, MazeMap map) {
+        var int bestRow, bestCol, bestDist, currentDist;
+
+        let bestRow  = er;
+        let bestCol  = ec;
+        let bestDist = AIHelper.manhattan(er, ec, pr, pc);
+
+        // Arriba
+        if (~map.isWall(er - 1, ec)) {
+            let currentDist = AIHelper.manhattan(er - 1, ec, pr, pc);
+            if (currentDist < bestDist) {
+                let bestDist = currentDist;
+                let bestRow  = er - 1;
+                let bestCol  = ec;
+            }
+        }
+
+        // Abajo
+        if (~map.isWall(er + 1, ec)) {
+            let currentDist = AIHelper.manhattan(er + 1, ec, pr, pc);
+            if (currentDist < bestDist) {
+                let bestDist = currentDist;
+                let bestRow  = er + 1;
+                let bestCol  = ec;
+            }
+        }
+
+        // Izquierda
+        if (~map.isWall(er, ec - 1)) {
+            let currentDist = AIHelper.manhattan(er, ec - 1, pr, pc);
+            if (currentDist < bestDist) {
+                let bestDist = currentDist;
+                let bestRow  = er;
+                let bestCol  = ec - 1;
+            }
+        }
+
+        // Derecha
+        if (~map.isWall(er, ec + 1)) {
+            let currentDist = AIHelper.manhattan(er, ec + 1, pr, pc);
+            if (currentDist < bestDist) {
+                let bestDist = currentDist;
+                let bestRow  = er;
+                let bestCol  = ec + 1;
+            }
+        }
+
+        return bestRow;
+    }
+
+    // Igual que nextRow pero devuelve la columna del mejor movimiento.
+    function int nextCol(int er, int ec, int pr, int pc, MazeMap map) {
+        var int bestRow, bestCol, bestDist, currentDist;
+
+        let bestRow  = er;
+        let bestCol  = ec;
+        let bestDist = AIHelper.manhattan(er, ec, pr, pc);
+
+        // Arriba
+        if (~map.isWall(er - 1, ec)) {
+            let currentDist = AIHelper.manhattan(er - 1, ec, pr, pc);
+            if (currentDist < bestDist) {
+                let bestDist = currentDist;
+                let bestRow  = er - 1;
+                let bestCol  = ec;
+            }
+        }
+
+        // Abajo
+        if (~map.isWall(er + 1, ec)) {
+            let currentDist = AIHelper.manhattan(er + 1, ec, pr, pc);
+            if (currentDist < bestDist) {
+                let bestDist = currentDist;
+                let bestRow  = er + 1;
+                let bestCol  = ec;
+            }
+        }
+
+        // Izquierda
+        if (~map.isWall(er, ec - 1)) {
+            let currentDist = AIHelper.manhattan(er, ec - 1, pr, pc);
+            if (currentDist < bestDist) {
+                let bestDist = currentDist;
+                let bestRow  = er;
+                let bestCol  = ec - 1;
+            }
+        }
+
+        // Derecha
+        if (~map.isWall(er, ec + 1)) {
+            let currentDist = AIHelper.manhattan(er, ec + 1, pr, pc);
+            if (currentDist < bestDist) {
+                let bestDist = currentDist;
+                let bestRow  = er;
+                let bestCol  = ec + 1;
+            }
+        }
+
+        return bestCol;
+    }
+}
